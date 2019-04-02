@@ -1,4 +1,4 @@
-# Perform CNN on MNIST dataset
+# Neuronales Netz für MNIST dataset Klassifkation
 from tensorflow.examples.tutorials.mnist import input_data # helper function to load data
 import tensorflow as tf
 import numpy as np
@@ -25,14 +25,12 @@ features = 784 # total pixels (28x28)
 # Definition Model-Nodes (input one image) 
 layer_nodes = [features, 250, target_classes] # input, hidden (250 neurons - adaptable), output
 
-#Hyperparameters (fixed during training)
+# Hyperparameters (fixed during training)
 epochs = 10
 batchs_size = 128  # how many images I want to be processed in parallel, # enter 2 potency as batch-size (better for graphic board)            
 learning_rate = 1e-3
 stddev = 0.100 # für Initialisierung Gewichte
 bias_init = 0.0 # Initialisieung Bias
-
-
 
 # TF Placeholders (input / output):
     # constants provide a value at the time of defining the tensor
@@ -43,7 +41,9 @@ y = tf.placeholder(dtype = tf.float32, shape=[None, target_classes], name = "y")
 # Weights
 W1 = tf.Variable(tf.truncated_normal(shape =[layer_nodes[0], layer_nodes[1]], stddev=stddev, name = "W1")) # Input zu Hidden: Normalverteilung truncated [-2*stdev, + 2*stddev]
 W2 = tf.Variable(tf.truncated_normal(shape =[layer_nodes[1], layer_nodes[2]], stddev=stddev, name = "W2")) # Hidden zu Output
-# Biases - Neuron aktiveren/deaktivieren?    - zum Verschieben der Aktivierungsfunktion 
+# Biases 
+    # bestimmt , wie stark der kumulierte Reiz sein muss, um das Neuron überhaupt anzuregen.
+    #  Bias verschiebt Grundniveau der Aktivierung.  Neuron aktiveren/deaktivieren?   
 b1 = tf.Variable(tf.constant(bias_init, shape = [layer_nodes[1]], name = "b1" )) # Hidden
 b2= tf.Variable(tf.constant(bias_init, shape = [layer_nodes[2]], name = "b2" )) # Output
 
