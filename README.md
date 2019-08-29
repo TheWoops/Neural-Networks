@@ -10,4 +10,5 @@
 - gym
 - tensorflow
 - nbextensions (https://jcb91-jupyter-contrib-nbextensions.readthedocs.io/en/d2/install.html)
+- interface to enable/disable nbextensions (https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator)
 
